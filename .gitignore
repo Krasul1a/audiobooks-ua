@@ -1,0 +1,33 @@
+# середовище та збірка
+holos_env/
+__pycache__/
+build/
+dist/
+build_log.txt
+*.spec.bak
+
+# моделі (великі, завантажуються окремо)
+models/
+
+# локальні дані користувача
+gui_settings.json
+holos_voices.txt
+журнал.txt
+selftest/
+test_*.wav
+
+# книги та аудіо
+*.txt
+!requirements.txt
+*.epub
+*.fb2
+*.fb2.zip
+*.mobi
+*.azw
+*.azw3
+*.pdf
+*.wav
+*.mp3
+*.m4a
+*.m4b
+* - аудіо/
