@@ -22,7 +22,7 @@ for pkg in ("customtkinter", "ruaccent", "imageio_ffmpeg", "espeakng_loader", "m
         print("skip", pkg, e)
 
 hiddenimports += collect_submodules("num2words")
-hiddenimports += ["onnxruntime", "pymupdf", "fitz", "pypdf", "soundfile", "PIL.ImageTk",
+hiddenimports += ["onnxruntime", "pymupdf", "soundfile", "PIL.ImageTk",
                   "darkdetect", "winsound",
                   # модулі, які імпортує модель Silero (torch.package) під час завантаження
                   "wave", "gzip", "json", "contextlib", "xml.etree.ElementTree",

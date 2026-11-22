@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/icon.png" width="120" alt="Аудіокниги">
+  <img src="assets/icon.png" width="120" alt="Аудіокниги">
 </p>
 
 <h1 align="center">Аудіокниги</h1>

@@ -420,49 +420,21 @@ def _reflow_pdf_text(text):
 
 
 def read_pdf(path):
-    book = Book()
-    try:
-        import pymupdf as fitz
-    except ImportError:
-        try:
-            import fitz
-        except ImportError:
-            fitz = None
+    import pymupdf
 
-    if fitz is not None:
-        doc = fitz.open(path)
-        meta = doc.metadata or {}
-        book.title = (meta.get("title") or "").strip()
-        book.author = (meta.get("author") or "").strip()
-        pages = [doc[i].get_text("text") for i in range(doc.page_count)]
-        toc = [(lvl, t, p) for lvl, t, p in doc.get_toc() if lvl == 1 and p >= 1]
-        # обкладинка - перша сторінка картинкою
-        try:
-            pix = doc[0].get_pixmap(dpi=110)
-            book.cover = pix.tobytes("jpeg") if hasattr(pix, "tobytes") else None
-        except Exception:
-            book.cover = None
-        doc.close()
-    else:
-        from pypdf import PdfReader
-        r = PdfReader(path)
-        info = r.metadata or {}
-        book.title = (info.get("/Title") or "").strip()
-        book.author = (info.get("/Author") or "").strip()
-        pages = [(p.extract_text() or "") for p in r.pages]
-        toc = []
-        try:
-            for item in r.outline:
-                if not isinstance(item, list):
-                    toc.append((1, item.title, r.get_destination_page_number(item) + 1))
-        except Exception:
-            toc = []
-        try:
-            imgs = sorted(r.pages[0].images, key=lambda im: len(im.data), reverse=True)
-            if imgs:
-                book.cover = imgs[0].data
-        except Exception:
-            pass
+    book = Book()
+    doc = pymupdf.open(path)
+    meta = doc.metadata or {}
+    book.title = (meta.get("title") or "").strip()
+    book.author = (meta.get("author") or "").strip()
+    pages = [doc[i].get_text("text") for i in range(doc.page_count)]
+    toc = [(lvl, t, p) for lvl, t, p in doc.get_toc() if lvl == 1 and p >= 1]
+    # обкладинка - перша сторінка картинкою
+    try:
+        book.cover = doc[0].get_pixmap(dpi=110).tobytes("jpeg")
+    except Exception:
+        book.cover = None
+    doc.close()
 
     full = "\n".join(pages)
     book.lang = detect_lang(full)

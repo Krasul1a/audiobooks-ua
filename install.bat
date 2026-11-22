@@ -27,7 +27,7 @@ set PY=holos_env\Scripts\python.exe
 %PY% -m pip install torch --index-url https://download.pytorch.org/whl/cpu
 if errorlevel 1 ( echo [ERROR] torch install failed & goto end )
 %PY% -m pip install soundfile numpy num2words
-%PY% -m pip install imageio-ffmpeg mobi pypdf pymupdf pillow customtkinter onnxruntime ruaccent misaki phonemizer-fork espeakng-loader
+%PY% -m pip install imageio-ffmpeg mobi pymupdf pillow customtkinter onnxruntime ruaccent misaki phonemizer-fork espeakng-loader
 if errorlevel 1 ( echo [ERROR] extra modules install failed & goto end )
 %PY% -m pip install git+https://github.com/patriotyk/ukrainian-word-stress.git git+https://github.com/patriotyk/ipa-uk.git
 if errorlevel 1 ( echo [ERROR] stress/ipa install failed & goto end )
