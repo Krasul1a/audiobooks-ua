@@ -104,8 +104,4 @@ build_exe.bat
 
 ## Подяки
 
-[patriotyk](https://github.com/patriotyk) за HolosTTS, ukrainian-word-stress та ipa-uk,
-[zaakirio](https://huggingface.co/zaakirio) за Kokoro-RU,
-[Silero](https://github.com/snakers4/silero-models),
-[RUAccent](https://github.com/Den4ikAI/ruaccent),
-[CustomTkinter](https://github.com/TomSchimansky/CustomTkinter).
+[patriotyk](https://github.com/patriotyk) за HolosTTS, 
